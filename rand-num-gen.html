@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Generate Random Numbers!</title>
+    </head>
+    <body>
+        <div id="mainContainer">
+            <div id="inputContainer">
+                <label for="numRolls">Number of Die Sides:</label>
+                <input type="text" id="numRollsInput" name="numRollsInput" maxlength="6">
+                <button type="button" id="goBtn">Randomize!</button>
+            </div>
+            <div id="outputContainer">
+                <!-- JS will modify the DOM here -->
+            </div>
+        </div>
+        <script>
+            // function to generate random numbers
+            function randNum(num) {
+                let randomNum = Math.floor((Math.random() * num) + 1);
+                console.log(randomNum);
+                return randomNum;
+            }
+
+            // display result to div
+            function printRandNum() {
+                const outputContainer = document.querySelector("#outputContainer");
+                const userInput = document.getElementById("numRollsInput").value;
+                const output = document.createElement("p");
+                output.textContent = "In a range from 1 to " + userInput 
+                + ", you rolled a " + randNum(userInput);
+                outputContainer.appendChild(output);
+            }
+
+            const goBtn = document.querySelector("#goBtn");
+            goBtn.addEventListener("click", () => {
+                printRandNum();
+            });
+        </script>
+    </body>
+</html>
